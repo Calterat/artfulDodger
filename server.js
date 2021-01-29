@@ -9,9 +9,12 @@ let PORT = process.env.PORT || 3001
 
 
 
-// If you want Vue Hot Reload comment this out AND uncomment the IF statement
+// IF YOU WANT VUE's HOT RELOAD:
+// comment out the line below AND run two servers with 'npm run serve' and 'npm start'
 app.use(servestatic(path.join(path.resolve(), 'dist')));
 
+
+// LEAVE THIS CODE HERE
 // if(process.env.NODE_ENV === 'production') {
 //   app.use(servestatic(path.join(path.resolve(), 'dist')));
 // }
