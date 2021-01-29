@@ -5,8 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "run": "node server.js",
-    "lint": "vue-cli-service lint"
+    "start": "node server.js",
+    "lint": "vue-cli-service lint",
+    "watch": "nodemon server.js",
+    "buildStart": "npm run build && npm start"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -25,6 +27,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "nodemon": "^2.0.7",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
