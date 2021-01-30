@@ -8,7 +8,8 @@
     "start": "node server.js",
     "lint": "vue-cli-service lint",
     "watch": "nodemon server.js",
-    "buildStart": "npm run build && npm start"
+    "buildStart": "npm run build && npm start",
+    "seed": "node db/index.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",

@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS dodgers;
+
+CREATE DATABASE dodgers;

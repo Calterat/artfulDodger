@@ -1,13 +1,16 @@
 const servestatic = require('serve-static');
 const path = require('path');
 const express = require('express');
+const sequelize = require('./config/connection');
 
+/*
+
+add additional requirements here
+
+*/
 
 const app = express();
 let PORT = process.env.PORT || 3001
-
-
-
 
 // IF YOU WANT VUE's HOT RELOAD
 // comment out the line below AND run two servers with 'npm run serve' and 'npm start'
@@ -21,8 +24,16 @@ app.use(servestatic(path.join(path.resolve(), 'dist')));
 //   app.use(servestatic(path.join(path.resolve(), 'dist')));
 // }
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+/*
 
+add additional app.use() here
+
+*/
 
 // starts Express Server
-app.listen(PORT, () => {console.log(`API server started on ${PORT}`)});
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {console.log(`API server lending an ear on port: ${PORT}`)});
+});
