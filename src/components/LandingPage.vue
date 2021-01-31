@@ -4,7 +4,7 @@
         <h3>Log In:</h3>
         <b-container>
             <b-row align-h="center">
-            <b-form @submit="onSubmitLogIn" @reset="onReset" v-if="show" class="formSizing">
+            <b-form @submit="onSubmitLogIn" @reset="onResetLogin" v-if="show" class="formSizing">
                 <b-form-group
                     id="input-group-1"
                     label="Email address:"
@@ -30,17 +30,17 @@
                 </b-form-group>
 
                 <b-button type="submit" variant="primary">Submit</b-button>
-                <b-button type="reset" variant="danger">Reset</b-button>
+                <b-button type="reset" variant="outline-danger">Reset</b-button>
             </b-form>
             </b-row>
-                <b-card class="mt-3" header="Form Data Result">
+                <b-card class="mt-3" header="Displaying formLogin in JSON">
                 <pre class="m-0">{{ formLogin }}</pre>
                 </b-card>
         </b-container>
         <!-- Register Form -->
         <b-container>
             <b-row align-h="center">
-            <b-form @submit="onSubmitRegister" @reset="onReset" v-if="show" class="formSizing">
+            <b-form @submit="onSubmitRegister" @reset="onResetRegister" v-if="show" class="formSizing">
                 <b-form-group
                     id="input-group-1"
                     label="Email address:"
@@ -80,10 +80,10 @@
                 </b-form-group>
 
                 <b-button type="submit" variant="primary">Submit</b-button>
-                <b-button type="reset" variant="danger">Reset</b-button>
+                <b-button type="reset" variant="outline-danger">Reset</b-button>
             </b-form>
             </b-row>
-                <b-card class="mt-3" header="Form Register">
+                <b-card class="mt-3" header="Displaying formRegister in JSON">
                 <pre class="m-0">{{ formRegister }}</pre>
                 </b-card>
         </b-container>
@@ -112,11 +112,11 @@
         event.preventDefault()
         alert(JSON.stringify(this.formLogin))
       },
-      onReset(event) {
+      onResetLogin(event) {
         event.preventDefault()
         // Reset our form values
         this.formLogin.email = ''
-        this.formLogin.name = ''
+        this.formLogin.password = ''
 
         // Trick to reset/clear native browser form validation state
         this.show = false
@@ -128,8 +128,22 @@
         event.preventDefault()
         alert(JSON.stringify(this.formRegister))
         },
+
+    onResetRegister(event) {
+        event.preventDefault()
+        // Reset our form values
+        this.formRegister.email = ''
+        this.formRegister.username = ''
+        this.formRegister.password = ''
+
+        // Trick to reset/clear native browser form validation state
+        this.show = false
+        this.$nextTick(() => {
+          this.show = true
+        })
+      },
     }
-    }
+  }
 </script>
 
 <style>
