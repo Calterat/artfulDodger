@@ -1,16 +1,19 @@
 <template>
   <div id="app"> 
-    <LandingPage/>
+    <!-- <LandingPage/> -->
+    <RoomSelection/>
   </div>
 </template>
 
 <script>
-import LandingPage from './components/LandingPage.vue'
+// import LandingPage from './components/LandingPage.vue'
+import RoomSelection from './components/RoomSelection.vue'
 
 export default {
   name: 'App',
   components: {
-    LandingPage
+    // LandingPage,
+    RoomSelection
   }
 }
 </script>
@@ -22,6 +25,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
