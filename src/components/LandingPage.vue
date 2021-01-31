@@ -38,6 +38,7 @@
                 </b-card>
         </b-container>
         <!-- Register Form -->
+        <h3>Register:</h3>
         <b-container>
             <b-row align-h="center">
             <b-form @submit="onSubmitRegister" @reset="onResetRegister" v-if="show" class="formSizing">
