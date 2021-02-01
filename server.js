@@ -41,7 +41,7 @@ app.use(routes);
 //   app.use(servestatic(path.join(path.resolve(), 'dist')));
 // }
 
-// app.use(session(sess));
+app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
