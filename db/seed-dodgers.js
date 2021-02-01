@@ -2,12 +2,12 @@ const { Dodger } = require('../models');
 
 const dodgerData = [
   {
-    username: 'testDodger1',
+    dodgername: 'testDodger1',
     email: 'testDodger1@email.com',
     password: 'password1'
   },
   {
-    username: 'testDodger2',
+    dodgername: 'testDodger2',
     email: 'testDodger2@email.com',
     password: 'password2'
   }
