@@ -40,7 +40,7 @@ app.use(servestatic(path.join(path.resolve(), 'dist')));
 //   app.use(servestatic(path.join(path.resolve(), 'dist')));
 // }
 
-app.use(session(sess));
+// app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -51,6 +51,6 @@ add additional app.use() here
 */
 
 // starts Express Server
-sequelize.sync({ force: false }).then(() => {
+// sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {console.log(`API server lending an ear on port: ${PORT}`)});
-});
+// });
