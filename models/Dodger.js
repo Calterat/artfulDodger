@@ -37,15 +37,13 @@ Dodger.init(
         len: [4]
       }
     },
-    gamesWon: {
+    games_won: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0
+      allowNull: false
     },
-    gamesLoss: {
+    games_loss: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0
+      allowNull: false
     }
   },
   {

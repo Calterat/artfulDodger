@@ -8,7 +8,8 @@
     "start": "node server.js",
     "lint": "vue-cli-service lint",
     "watch": "nodemon server.js",
-    "buildStart": "npm run build && npm start",
+    "buildStart": "npm run build && npm run start",
+    "buildWatch": "npm run build && npm run watch",
     "seed": "node db/index.js"
   },
   "dependencies": {
@@ -22,7 +23,8 @@
     "sequelize": "^6.5.0",
     "serve-static": "^1.14.1",
     "vue": "^2.6.12",
-    "vue-session": "^1.0.0"
+    "vue-session": "^1.0.0",
+    "vue-storage-watcher": "^1.3.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

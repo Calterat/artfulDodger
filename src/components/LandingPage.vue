@@ -127,8 +127,14 @@
 
         if (response.ok) {
           alert("Welcome Back, Chump!  **snickers, then yells to the back** Didn't we just crush this weasel?!");
-          console.log(response);
-          this.$emit("roomSelection");
+          const { dodgername, games_loss, games_won, loggedIn } = await response.json();
+          this.$session.start();
+          this.$session.set('dodgername', dodgername);
+          this.$session.set('games_loss', games_loss);
+          this.$session.set('games_won', games_won);
+          this.$session.set('loggedIn', loggedIn);
+          this.$session.set('inRoom', false);
+          this.$emit('loggingIn');
         } else alert(response.statusText);
       },
       onResetLogin(event) {
@@ -149,20 +155,30 @@
         const dodgername = this.formRegister.username.trim();
         const email = this.formRegister.email.trim();
         const password = this.formRegister.password.trim();
+        const games_won = 0;
+        const games_loss = 0;
 
         const response = await fetch('/api/dodgers', {
           method: 'POST',
           body: JSON.stringify({
             dodgername,
             email,
-            password
+            password,
+            games_won,
+            games_loss
           }),
           headers: { 'Content-Type': 'application/json' }
         });
 
         if (response.ok) {
           alert('Welcome, Chump!  **snickers, then yells to the back** Fresh Meat Joining!');
-          console.log(response);
+          const { dodgername, games_loss, games_won, loggedIn } = await response.json();
+          this.$session.start();
+          this.$session.set('dodgername', dodgername);
+          this.$session.set('games_loss', games_loss);
+          this.$session.set('games_won', games_won);
+          this.$session.set('loggedIn', loggedIn);
+          this.$session.set('inRoom', false);
         } else alert(response.statusText);
       },
 

@@ -1,7 +1,19 @@
 <template>
   <div id="app"> 
-    <LandingPage v-if="!loggedIn" @roomSelection="loggedInSwitch"/>
-    <RoomSelection v-else-if="loggedIn && !inRoom" @joinRoom="inRoomSwitch"/>
+    <b-nav>
+      <b-nav-item-dropdown
+        id="account-dropdown"
+        text="Account"
+        toggle-class="nav-link-custom"
+        right
+      >
+        <b-dropdown-item v-if="!loggedIn">You can logout from here if you log in!</b-dropdown-item>
+        <b-dropdown-item v-if="loggedIn" @click="logout">Logout</b-dropdown-item>
+        <b-dropdown-item v-if="loggedIn && inRoom" @click="leaveRoom">Leave Room</b-dropdown-item>
+      </b-nav-item-dropdown>
+    </b-nav>
+    <LandingPage v-if="!loggedIn" @loggingIn="login" />
+    <RoomSelection v-else-if="loggedIn && !inRoom" @joiningRoom="joinRoom" />
     <GameRoom v-else/>
   </div>
 </template>
@@ -16,22 +28,40 @@ export default {
     return {
     name: 'App',
     loggedIn: false,
-    inRoom: false,
+    inRoom: false
     }
   },
   components: {
       LandingPage,
       RoomSelection,
       GameRoom
+  },
+  mounted() {
+    if (this.$session.exists() && this.$session.get('loggedIn')) this.loggedIn = true;
+  },
+  methods: {
+    login() {
+      this.$session.remove('loggedIn');
+      this.$session.set('loggedIn', true);
+      this.loggedIn = true;
     },
-    methods: {
-      loggedInSwitch() {
-        this.loggedIn = !this.loggedIn;
-      },
-      inRoomSwitch() {
-        this.inRoom = !this.inRoom;
-      }
-    }
+    joinRoom() {
+      this.$session.remove('inRoom');
+      this.$session.set('inRoom', true);
+      this.inRoom = true;
+    },
+    leaveRoom() {
+      this.$session.remove('inRoom');
+      this.$session.set('inRoom', false);
+      this.inRoom = false;
+    },
+    logout() {
+      this.$session.clear();
+      this.$session.destroy();
+      this.loggedIn = false;
+      this.inRoom = false;
+    },
+  },
 }
 </script>
 
