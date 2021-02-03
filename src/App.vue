@@ -1,28 +1,35 @@
 <template>
   <div id="app"> 
     <LandingPage v-if="!loggedIn" @roomSelection="loggedInSwitch"/>
-    <RoomSelection v-else/>
+    <RoomSelection v-else-if="loggedIn && !inRoom" @joinRoom="inRoomSwitch"/>
+    <GameRoom v-else/>
   </div>
 </template>
 
 <script>
 import LandingPage from './components/LandingPage.vue'
 import RoomSelection from './components/RoomSelection.vue'
+import GameRoom from './components/GameRoom.vue'
 
 export default {
   data() {
     return {
     name: 'App',
-    loggedIn: false
+    loggedIn: false,
+    inRoom: false,
     }
   },
   components: {
       LandingPage,
-      RoomSelection
+      RoomSelection,
+      GameRoom
     },
     methods: {
       loggedInSwitch() {
         this.loggedIn = !this.loggedIn;
+      },
+      inRoomSwitch() {
+        this.inRoom = !this.inRoom;
       }
     }
 }

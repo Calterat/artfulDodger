@@ -23,7 +23,7 @@
             </b-row>
         </b-container>
         <h2>To Join A game press the button below!</h2>
-        <b-button squared variant="outline-danger">Join Game</b-button>
+        <b-button squared variant="outline-danger" @click="gameRoom">Join Game</b-button>
     </div>
 </template>
 
@@ -35,7 +35,9 @@ export default {
         }
     },
     methods: {
-
+        gameRoom() {
+            this.$emit("joinRoom")
+        }
     }
 }
 </script>
