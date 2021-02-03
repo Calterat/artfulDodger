@@ -109,9 +109,23 @@
       }
     },
     methods: {
-      onSubmitLogIn(event) {
+      async onSubmitLogIn(event) {
         event.preventDefault()
-        alert(JSON.stringify(this.formLogin))
+        
+        const email = this.formLogin.email.trim();
+        const password = this.formLogin.password.trim();
+
+        const response = await fetch('/api/dodgers/login', {
+          method: 'POST',
+          body: JSON.stringify({
+            email,
+            password
+          }),
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (response.ok) alert("Welcome Back, Chump!  **snickers, then yells to the back** Didn't we just crush this weasel?!"); // This will need to route to Room Selection
+        else alert(response.statusText);
       },
       onResetLogin(event) {
         event.preventDefault()
@@ -125,10 +139,26 @@
           this.show = true
         })
       },
-      onSubmitRegister(event) {
+      async onSubmitRegister(event) {
         event.preventDefault()
-        alert(JSON.stringify(this.formRegister))
-        },
+
+        const dodgername = this.formRegister.username.trim();
+        const email = this.formRegister.email.trim();
+        const password = this.formRegister.password.trim();
+
+        const response = await fetch('/api/dodgers', {
+          method: 'POST',
+          body: JSON.stringify({
+            dodgername,
+            email,
+            password
+          }),
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (response.ok) alert('Welcome, Chump!  **snickers, then yells to the back** Fresh Meat Joining!'); // This will need to route to Room Selection
+        else alert(response.statusText);
+      },
 
     onResetRegister(event) {
         event.preventDefault()
