@@ -4,13 +4,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueSession from 'vue-session'; 
-import lsWatcher from "vue-storage-watcher";
 
-const options = {
-  persist: true
-}
-
-Vue.use(lsWatcher, {});
 Vue.use(VueSession, options);
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
