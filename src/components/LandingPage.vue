@@ -179,6 +179,7 @@
           this.$session.set('games_won', games_won);
           this.$session.set('loggedIn', loggedIn);
           this.$session.set('inRoom', false);
+          this.#emit('loggingIn');
         } else alert(response.statusText);
       },
 
