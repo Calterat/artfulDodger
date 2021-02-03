@@ -105,7 +105,8 @@
             username: '',
             password: '',
         },
-        show: true
+        show: true,
+        
       }
     },
     methods: {
@@ -123,8 +124,11 @@
           }),
           headers: { 'Content-Type': 'application/json' }
         });
-
-        if (response.ok) alert("Welcome Back, Chump!  **snickers, then yells to the back** Didn't we just crush this weasel?!"); // This will need to route to Room Selection
+        if (response.ok) {
+          alert("Welcome Back, Chump!  **snickers, then yells to the back** Didn't we just crush this weasel?!"); // This will need to route to Room Selection
+          this.$emit("roomSelection");
+          } 
+          
         else alert(response.statusText);
       },
       onResetLogin(event) {
@@ -136,7 +140,7 @@
         // Trick to reset/clear native browser form validation state
         this.show = false
         this.$nextTick(() => {
-          this.show = true
+        this.show = true
         })
       },
       async onSubmitRegister(event) {
