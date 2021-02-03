@@ -36,6 +36,6 @@ add additional app.use() here
 */
 
 // starts Express Server
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => {console.log(`API server lending an ear on port: ${PORT}`)});
 });
