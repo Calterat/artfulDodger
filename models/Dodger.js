@@ -36,6 +36,16 @@ Dodger.init(
       validate: {
         len: [4]
       }
+    },
+    gamesWon: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
+    gamesLoss: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
     }
   },
   {

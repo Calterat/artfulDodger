@@ -124,12 +124,12 @@
           }),
           headers: { 'Content-Type': 'application/json' }
         });
+
         if (response.ok) {
-          alert("Welcome Back, Chump!  **snickers, then yells to the back** Didn't we just crush this weasel?!"); // This will need to route to Room Selection
+          alert("Welcome Back, Chump!  **snickers, then yells to the back** Didn't we just crush this weasel?!");
+          console.log(response);
           this.$emit("roomSelection");
-          } 
-          
-        else alert(response.statusText);
+        } else alert(response.statusText);
       },
       onResetLogin(event) {
         event.preventDefault()
@@ -160,8 +160,10 @@
           headers: { 'Content-Type': 'application/json' }
         });
 
-        if (response.ok) alert('Welcome, Chump!  **snickers, then yells to the back** Fresh Meat Joining!'); // This will need to route to Room Selection
-        else alert(response.statusText);
+        if (response.ok) {
+          alert('Welcome, Chump!  **snickers, then yells to the back** Fresh Meat Joining!');
+          console.log(response);
+        } else alert(response.statusText);
       },
 
     onResetRegister(event) {
