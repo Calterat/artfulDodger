@@ -30,7 +30,7 @@ sequelize.sync({ force: false }).then(() => {
 
 io.on('connection', function(socket) {
   console.log(socket.id);
-  socket.emit('connection', 'connected!')
+  socket.emit('connection', 'just joined the room');
   socket.on("send-message", data => {
     io.emit("send-message", data)
   });

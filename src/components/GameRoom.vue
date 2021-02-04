@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p>Message from server: "{{socketMessage}}"</p>
+    <p>Welcome, {{ user }}!</p>
     <form @submit.prevent="sendMessage">
-        <input v-model="message" />
+        <input type="text" v-model="message" placeholder="Message..." />
         <button type="submit">Send Message</button>
     </form>
     <br>
@@ -28,7 +28,7 @@ export default {
     },
     mounted() {
         this.socket.on("connection", data => {
-            this.socketMessage = data;
+            this.messages.push({ user: this.user, message: data });
         });
         this.socket.on('send-message', (data) => {
             this.messages.push(data);
