@@ -3,7 +3,7 @@
     <div class="titleContainer w-auto bg-secondary">
       <h1 class="title"><strong class="headerRoom">{{userName}}</strong> decided to show up...</h1>
     </div>
-    <b-container>
+    <b-container class="titleRoom">
       <b-row align-h="between">
         <b-col cols="4">
         <h2 class="headerRoom">Chat Rules:</h2>
@@ -20,9 +20,9 @@
         </b-col>
       </b-row>
     </b-container>
-    <h2><strong> To Join a chat, press the button below! </strong></h2>
+    <h2 class="joinRoomRoom"><strong> To Join a chat, press the button below! </strong></h2>
     <p>(..not to pressure you, but I heard that Julian is in here..)</p>
-    <b-button squared variant="outline-danger" @click="joinRoom">Join Game</b-button>
+    <b-button squared variant="outline-danger" @click="joinRoom">Join Chat</b-button>
   </div>
 </template>
 
@@ -39,7 +39,7 @@ export default {
       this.$session.remove('inRoom');
       this.$session.set('inRoom', true);
       this.$emit('joiningRoom');
-    }
+    },
   }
 }
 </script>
@@ -54,5 +54,13 @@ export default {
 
   .headerRoom {
     text-decoration: underline;
+  }
+
+  .titleRoom {
+    padding-top: 3em;
+  }
+
+  .joinRoomRoom {
+    padding-top: 1.5em;
   }
 </style>
