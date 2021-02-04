@@ -4,24 +4,19 @@ const express = require('express');
 const sequelize = require('./config/connection');
 const routes = require('./controllers');
 
-/*
-
-add additional requirements here
-
-*/
-
 const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
 let PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// IF YOU WANT VUE's HOT RELOAD
-// comment out the line below AND run two servers with 'npm run serve' and 'npm start'
 app.use(servestatic(path.join(path.resolve(), 'dist')));
 app.use(routes);
 
-// ALSO
+// IF YOU WANT VUE's HOT RELOAD
+// comment out the line below AND run two servers with 'npm run serve' and 'npm start'
 
 // UNCOMMENT THIS FOR HOT RELOAD
 // LEAVE THIS CODE HERE
@@ -29,13 +24,15 @@ app.use(routes);
 //   app.use(servestatic(path.join(path.resolve(), 'dist')));
 // }
 
-/*
-
-add additional app.use() here
-
-*/
-
-// starts Express Server
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {console.log(`API server lending an ear on port: ${PORT}`)});
+  server.listen(PORT, () => {console.log(`API server lending an ear on port: ${PORT}`)});
 });
+
+io.on('connection', function(socket) {
+  console.log(socket.id);
+  socket.emit('connection', 'connected!')
+  socket.on("send-message", data => {
+    io.emit("send-message", data)
+  });
+});
+

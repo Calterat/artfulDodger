@@ -28,7 +28,7 @@ export default {
     return {
     name: 'App',
     loggedIn: false,
-    inRoom: false
+    inRoom: false,
     }
   },
   components: {

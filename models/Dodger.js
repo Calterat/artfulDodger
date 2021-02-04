@@ -3,12 +3,10 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 
 class Dodger extends Model {
-
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
-
-};
+}
 
 Dodger.init(
   {
