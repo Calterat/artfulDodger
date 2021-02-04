@@ -14,6 +14,7 @@
           <b-dropdown-item v-if="loggedIn" @click="logout">Logout</b-dropdown-item>
           <b-dropdown-item v-if="loggedIn && inRoom" @click="leaveRoom">Leave Room</b-dropdown-item>
         </b-nav-item-dropdown>
+        <b-nav-item href="#">The Artful Dodger</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
     </div>
