@@ -2,7 +2,11 @@
   <div id="app"> 
     <div>
       <b-navbar type="dark" variant="dark">
-        <b-navbar-nav>
+      <b-navbar-nav class="ml-auto">
+        <b-nav-item href="#" v-if="loggedIn && inRoom" @click="leaveRoom">The Artful Dodger</b-nav-item>
+        <b-nav-item href="#" v-if="loggedIn && !inRoom" @click="ball">The Artful Dodger</b-nav-item>
+      </b-navbar-nav>
+        <b-navbar-nav class="ml-auto">
         <b-nav-item href="#" v-if="loggedIn && inRoom" @click="leaveRoom">Home</b-nav-item>
         <b-nav-item-dropdown
           id="account-dropdown"
@@ -11,20 +15,16 @@
           right
         >
           <b-dropdown-item v-if="!loggedIn">You can logout from here if you log in!</b-dropdown-item>
-          <b-dropdown-item v-if="loggedIn" @click="logout">Logout</b-dropdown-item>
-          <b-dropdown-item v-if="loggedIn && inRoom" @click="leaveRoom">Leave Room</b-dropdown-item>
+          <b-dropdown-item v-if="loggedIn" @click="logout" right>Logout</b-dropdown-item>
+          <b-dropdown-item v-if="loggedIn && inRoom" @click="leaveRoom" right>Leave Room</b-dropdown-item>
         </b-nav-item-dropdown>
-      </b-navbar-nav>
-      <b-navbar-nav class="ml-auto">
-        <b-nav-item href="#" v-if="loggedIn && inRoom" @click="leaveRoom">The Artful Dodger</b-nav-item>
-        <b-nav-item href="#" v-if="loggedIn" @click="ball">The Artful Dodger</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
     </div>
     <LandingPage v-if="!loggedIn" @loggingIn="login" />
     <RoomSelection v-else-if="loggedIn && !inRoom" @joiningRoom="joinRoom" />
     <GameRoom v-else/>
-    <FoundBall v-if="ballFound"/>
+    <FoundBall v-if="ballFound && !inRoom"/>
   </div>
 </template>
 
