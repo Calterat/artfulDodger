@@ -1,17 +1,22 @@
 <template>
   <div id="app"> 
-    <b-nav>
-      <b-nav-item-dropdown
-        id="account-dropdown"
-        text="Account"
-        toggle-class="nav-link-custom"
-        right
-      >
-        <b-dropdown-item v-if="!loggedIn">You can logout from here if you log in!</b-dropdown-item>
-        <b-dropdown-item v-if="loggedIn" @click="logout">Logout</b-dropdown-item>
-        <b-dropdown-item v-if="loggedIn && inRoom" @click="leaveRoom">Leave Room</b-dropdown-item>
-      </b-nav-item-dropdown>
-    </b-nav>
+    <div>
+      <b-navbar type="dark" variant="dark">
+        <b-navbar-nav>
+        <b-nav-item href="#">Home</b-nav-item>
+        <b-nav-item-dropdown
+          id="account-dropdown"
+          text="User"
+          toggle-class="nav-link-custom"
+          right
+        >
+          <b-dropdown-item v-if="!loggedIn">You can logout from here if you log in!</b-dropdown-item>
+          <b-dropdown-item v-if="loggedIn" @click="logout">Logout</b-dropdown-item>
+          <b-dropdown-item v-if="loggedIn && inRoom" @click="leaveRoom">Leave Room</b-dropdown-item>
+        </b-nav-item-dropdown>
+      </b-navbar-nav>
+    </b-navbar>
+    </div>
     <LandingPage v-if="!loggedIn" @loggingIn="login" />
     <RoomSelection v-else-if="loggedIn && !inRoom" @joiningRoom="joinRoom" />
     <GameRoom v-else/>
