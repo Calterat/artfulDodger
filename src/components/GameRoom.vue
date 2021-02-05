@@ -28,10 +28,10 @@ export default {
     },
     mounted() {
         this.socket.on("connection", data => {
-            this.messages.push({ user: this.user, message: data });
+            this.messages.unshift({ user: this.user, message: data });
         });
         this.socket.on('send-message', (data) => {
-            this.messages.push(data);
+            this.messages.unshift(data);
         })
     },
     methods: {
