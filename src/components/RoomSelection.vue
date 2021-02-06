@@ -1,16 +1,16 @@
 <template>
-  <div>
-    <div class="titleContainer w-auto bg-secondary">
-      <h1 class="title"><strong class="headerRoom">{{userName}}</strong> decided to show up...</h1>
+  <div :style="{'background-image':'url(https://webgradients.com/public/webgradients_png/035%20Itmeo%20Branding.png)'}">
+    <div class="titleContainer w-auto">
+      <h1 class="title"><strong class="headerRoom">{{userName}}</strong> decided to join the chat!</h1>
     </div>
     <b-container class="titleRoom">
       <b-row align-h="between">
         <b-col cols="4">
         <h2 class="headerRoom">Chat Rules:</h2>
-        <p>If you see a developer in the room, you are required by the USER AGREEMENT to harrass them with messages (positive or other)</p>
-        <p>There is ball, find it</p>
-        <p>Be nice to other users,, or naw</p>
-        <p>And don't be the last one in the chat! Cool cats leave early</p>
+        <p>-If you see a developer in the room, you are required by the USER AGREEMENT to harrass them with messages (positive or other).</p>
+        <p>-There is ball, find it.</p>
+        <p>-Be nice to other users, or naw.</p>
+        <p>-And don't be the last one in the chat! Cool cats leave early.</p>
         </b-col>
         <b-col cols="4">
         <h2 class="headerRoom">You have sent this many messages!</h2>

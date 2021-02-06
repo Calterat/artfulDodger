@@ -1,7 +1,7 @@
 <template>
   <div id="app"> 
     <div>
-      <b-navbar type="dark" variant="dark">
+      <b-navbar text="black" :style="{'background-image':'url(https://www.solidbackgrounds.com/images/2560x1600/2560x1600-pale-blue-solid-color-background.jpg)'}">
       <b-navbar-nav class="ml-auto">
         <b-nav-item href="#" v-if="loggedIn && inRoom" @click="leaveRoom">The Artful Dodger</b-nav-item>
         <b-nav-item href="#" v-if="loggedIn && !inRoom" @click="ball">The Artful Dodger</b-nav-item>
@@ -87,7 +87,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #1d2022;
+  
 }
 
   .titleName {

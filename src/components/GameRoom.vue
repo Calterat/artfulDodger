@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :style="{'background-image':'url(https://webgradients.com/public/webgradients_png/035%20Itmeo%20Branding.png)'}">
     <p>Welcome, {{ user }}!</p>
     <form @submit.prevent="sendMessage">
         <input type="text" v-model="message" placeholder="Message..." />
